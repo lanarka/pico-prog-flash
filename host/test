@@ -1,0 +1,7 @@
+#!/bin/bash
+
+sudo python3 run.py erase
+head -c 8388608 /dev/urandom > random.bin
+sudo python3 run.py write random.bin 0x00000000
+sudo python3 run.py read random1.bin 8388608 0x00000000
+diff random.bin random1.bin
